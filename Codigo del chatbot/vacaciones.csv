@@ -1,5 +1,5 @@
-﻿id_empleado;mes_inicio;dia_inicio;dia_fin;estado
-101;7;10;24;confirmado
+id_empleado;mes_inicio;dia_inicio;dia_fin;estado
+101;1;10;24;confirmado
 102;6;5;19;confirmado
 103;;;;libre
 104;;;;libre

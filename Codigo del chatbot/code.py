@@ -1,13 +1,12 @@
 import csv
 
 #Leer empleados
-with open("empleados.csv") as f: #guarda el archivo en variable f
-    empleados = list(csv.DictReader(f, delimiter=";")) #crea diccionario
+with open("empleados.csv", encoding="utf-8-sig") as f: #guarda el archivo en variable f
+    empleados = list(csv.DictReader(f, delimiter=";")) #crea diccionario  #sig elimina cualquier espacio o digito invisible 
 
 #Leer vacaciones
-with open("vacaciones.csv", encoding="utf-8") as f:
+with open("vacaciones.csv", encoding="utf-8-sig") as f:
     vacaciones = list(csv.DictReader(f, delimiter=";"))
-
 #Funcion para buscar empleado
 
 def buscar_empleado(id_buscar, lista):
@@ -96,7 +95,7 @@ while estado == "ESPERANDO_FECHA" and intentos_fecha < max_intentos:
     
     if dia_fin > 30:
         intentos_fecha += 1
-        print("Fecha no valida. No puede cruzar de mes")
+        print("Fecha no valida - Ocupada")
         print("Intentos:", intentos_fecha)
     else:
         valido = True
