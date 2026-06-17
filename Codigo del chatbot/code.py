@@ -1,3 +1,30 @@
+"""
+CHATBOT DE GESTIÓN DE VACACIONES
+
+Este programa simula un chatbot de gestión de vacaciones para una institución educativa.
+
+Funcionamiento:
+
+1. Solicita el ID del empleado.
+2. Valida que el empleado exista en la base de datos (empleados.csv).
+3. Calcula los días de vacaciones según la antigüedad.
+4. Solicita una fecha para las vacaciones.
+5. Verifica que la fecha sea válida.
+6. Registra la solicitud en vacaciones.csv.
+7. Si el usuario supera la cantidad máxima de intentos permitidos, el sistema deriva el caso a Recursos Humanos.
+
+Archivos utilizados:
+
+* empleados.csv: almacena información de los empleados.
+* vacaciones.csv: almacena las solicitudes de vacaciones.
+
+Autores:
+Micaela Ibarra y Leila Gomez
+
+Trabajo Práctico Integrador
+Organización Empresarial - TUP UTN
+"""
+
 import csv
 
 #Leer empleados
