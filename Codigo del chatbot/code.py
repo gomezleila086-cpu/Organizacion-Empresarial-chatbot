@@ -11,9 +11,9 @@ with open("vacaciones.csv") as f:
 #Funcion para buscar empleado
 
 def buscar_empleado(id_buscar, lista):
-    for e in lista:
-        if e["id_empleado"] == id_buscar:
-            return e
+    for e in lista: #recorre los empleados
+        if e["id_empleado"].strip() == id_buscar.strip(): #compara los id
+            return e #si lo encuentra, lo devuelve
     return None
 
 #Funcion calcular dias
@@ -30,12 +30,18 @@ def calcular_dias(antiguedad):
 #Funcion guardar
 
 def guardar(datos):
-    with open("vacaciones.csv", "w", newline="") as f:
-        campos = ["id_empleado","mes_inicio","dia_inicio","dia_fin","estado"]
-        writer = csv.DictWriter(f, fieldnames=campos, delimiter=";")
-
-        writer.writeheader()
-        writer.writerows(datos)
+    with open("vacaciones.csv", "w", encoding="utf-8") as f:
+        f.write("id_empleado;mes_inicio;dia_inicio;dia_fin;estado\n")
+        for v in datos:
+            linea = (
+                v["id_empleado"] + ";" +
+                v["mes_inicio"] + ";" +
+                v["dia_inicio"] + ";" +
+                v["dia_fin"] + ";" +
+                v["estado"] + "\n" 
+             )
+            f.write(linea)
+        
 
 
 #Chatbot parte principal
@@ -45,7 +51,7 @@ print("Soy ChatBot, ingresa tu ID para identificarte")
 
 id_emp = input("ID: ")
 
-empleado = buscar_empleado(id_emp, empleados)
+empleado = buscar_empleado(id_emp, empleados) #busca el empleado en la lista
 
 if empleado is None:
     print("Empleado no encontrado")
@@ -63,12 +69,12 @@ else:
     if dia_fin > 30:
         print("No se puede cruzar de mes")
     else:
-        for v in vacaciones:
-            if v["id_empleado"] == id_emp:
+        for v in vacaciones: #si esta todo ok se recorren todas las solicitudes
+            if v["id_empleado"].strip() == id_emp.strip(): #busca la fila del empleado
                 v["mes_inicio"] = str(mes)
                 v["dia_inicio"] = str(dia_inicio)
                 v["dia_fin"] = str(dia_fin)
-                v["estado"] = "confirmado"
+                v["estado"] = "confirmado"   #actualiza la solicitud
         guardar(vacaciones)
-print("Vacaciones guardadas correctamente! ")
+        print("Vacaciones guardadas correctamente! ")
 
