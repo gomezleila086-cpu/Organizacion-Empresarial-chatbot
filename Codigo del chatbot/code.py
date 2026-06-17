@@ -49,12 +49,24 @@ def guardar(datos):
 print("Bienvenido a la gestion de vacaciones de Leimi!")
 print("Soy ChatBot, ingresa tu ID para identificarte")
 
-id_emp = input("ID: ")
+intentos_id = 0
+max_intentos = 3
 
-empleado = buscar_empleado(id_emp, empleados) #busca el empleado en la lista
+empleado = None
+
+while intentos_id < max_intentos and empleado is None:
+    id_emp = input("ID: ")
+    empleado = buscar_empleado(id_emp, empleados) #busca el empleado en la lista
+
+    if empleado is None:
+        intentos_id += 1
+        print("ID incorrecto. Intentos", intentos_id)
 
 if empleado is None:
-    print("Empleado no encontrado")
+    print("Derivado a Recursos Humanos por multiples intentos de identificacion")
+    print("NOTIFICACION RRHH: empleado no identificado tras tres intentos")
+    break
+
 else:
     print("Hola", empleado["nombre"])
 
