@@ -49,13 +49,14 @@ def guardar(datos):
 print("Bienvenido a la gestion de vacaciones de Leimi!")
 print("Soy ChatBot, ingresa tu ID para identificarte")
 
+#Control de ID y fechas
 intentos_id = 0
 max_intentos = 3
-
 empleado = None
 
+
 while intentos_id < max_intentos and empleado is None:
-    id_emp = input("ID: ")
+    id_emp = input("Ingrese su ID: ")
     empleado = buscar_empleado(id_emp, empleados) #busca el empleado en la lista
 
     if empleado is None:
@@ -65,7 +66,7 @@ while intentos_id < max_intentos and empleado is None:
 if empleado is None:
     print("Derivado a Recursos Humanos por multiples intentos de identificacion")
     print("NOTIFICACION RRHH: empleado no identificado tras tres intentos")
-    break
+    exit()
 
 else:
     print("Hola", empleado["nombre"])
@@ -73,20 +74,43 @@ else:
     dias = calcular_dias(empleado["antiguedad"])
     print("Te corresponden", dias, "dias de vacaciones")
 
+
+#Control de fechas 
+intentos_fecha = 0
+max_intentos = 3
+valido = False
+
+while intentos_fecha < max_intentos and not valido:
+
     mes = int(input("Ingrese el mes (1-12): "))
     dia_inicio = int(input("Ingrese el dia de inicio: "))
 
     dia_fin = dia_inicio + dias
     
     if dia_fin > 30:
-        print("No se puede cruzar de mes")
+        intentos_fecha += 1
+        print("Fecha no valida. No puede cruzar de mes")
+        print("Intentos:", intentos_fecha)
     else:
-        for v in vacaciones: #si esta todo ok se recorren todas las solicitudes
-            if v["id_empleado"].strip() == id_emp.strip(): #busca la fila del empleado
-                v["mes_inicio"] = str(mes)
-                v["dia_inicio"] = str(dia_inicio)
-                v["dia_fin"] = str(dia_fin)
-                v["estado"] = "confirmado"   #actualiza la solicitud
-        guardar(vacaciones)
-        print("Vacaciones guardadas correctamente! ")
+        valido = True
+    
 
+#Derivacion a RRHH Si falla fecha
+if not valido:
+    print("Derivado a RRHH por intentos fallidos de fechas")
+    print("NOTIFICACION RRHH: solicitud de vacaciones rechazada por errores de fecha")
+
+#Guardar vacaciones 
+for v in vacaciones:
+    if v["id_empleado"].strip() == id_emp.strip():
+        v["mes_inicio"] = str(mes)
+        v["dia_inicio"] = str(dia_inicio)
+        v["dia_fin"] = str(dia_fin)
+        v["estado"] = "confirmado"
+
+guardar(vacaciones)
+
+print("Vacaciones guardadas correctamente!")
+
+#Notificacion RRHH FINAL
+print("NOTIFICACION RRHH: solicitud de vacaciones procesada")
