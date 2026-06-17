@@ -5,7 +5,7 @@ with open("empleados.csv") as f: #guarda el archivo en variable f
     empleados = list(csv.DictReader(f, delimiter=";")) #crea diccionario
 
 #Leer vacaciones
-with open("vacaciones.csv") as f:
+with open("vacaciones.csv", encoding="utf-8") as f:
     vacaciones = list(csv.DictReader(f, delimiter=";"))
 
 #Funcion para buscar empleado
