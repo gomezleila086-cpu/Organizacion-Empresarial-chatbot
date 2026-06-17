@@ -43,6 +43,8 @@ def guardar(datos):
             f.write(linea)
         
 
+#Maquina de datos
+estado ="ESPERANDO_ID"
 
 #Chatbot parte principal
 
@@ -55,15 +57,18 @@ max_intentos = 3
 empleado = None
 
 
-while intentos_id < max_intentos and empleado is None:
+while estado == "ESPERANDO_ID" and intentos_id < max_intentos:
     id_emp = input("Ingrese su ID: ")
     empleado = buscar_empleado(id_emp, empleados) #busca el empleado en la lista
 
     if empleado is None:
         intentos_id += 1
         print("ID incorrecto. Intentos", intentos_id)
+    else:
+        estado = "EMPLEADO_AUTENTICADO"
 
 if empleado is None:
+    estado = "ERROR_ID"
     print("Derivado a Recursos Humanos por multiples intentos de identificacion")
     print("NOTIFICACION RRHH: empleado no identificado tras tres intentos")
     exit()
@@ -74,13 +79,15 @@ else:
     dias = calcular_dias(empleado["antiguedad"])
     print("Te corresponden", dias, "dias de vacaciones")
 
+    estado = "ESPERANDO_FECHA"
+
 
 #Control de fechas 
 intentos_fecha = 0
 max_intentos = 3
 valido = False
 
-while intentos_fecha < max_intentos and not valido:
+while estado == "ESPERANDO_FECHA" and intentos_fecha < max_intentos:
 
     mes = int(input("Ingrese el mes (1-12): "))
     dia_inicio = int(input("Ingrese el dia de inicio: "))
@@ -93,12 +100,15 @@ while intentos_fecha < max_intentos and not valido:
         print("Intentos:", intentos_fecha)
     else:
         valido = True
+        estado = "FECHA_VALIDADA"
     
 
 #Derivacion a RRHH Si falla fecha
 if not valido:
+    estado = "ERROR_FECHA"
     print("Derivado a RRHH por intentos fallidos de fechas")
     print("NOTIFICACION RRHH: solicitud de vacaciones rechazada por errores de fecha")
+    exit()
 
 #Guardar vacaciones 
 for v in vacaciones:
@@ -109,6 +119,7 @@ for v in vacaciones:
         v["estado"] = "confirmado"
 
 guardar(vacaciones)
+estado = "CONFIRMADO"
 
 print("Vacaciones guardadas correctamente!")
 
