@@ -1,0 +1,9 @@
+Base de datos: Empleados;;
+Esta tabla contiene informacion necesaria para validar al empleado y calcular sus dias de vacaciones;;
+;;
+id_empleado;nombre;antiguedad
+101;Juan;1
+102;Ana;1
+103;Mariel;2
+104;Hernan;3
+;;
