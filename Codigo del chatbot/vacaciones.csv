@@ -1,7 +1,7 @@
-﻿id_empleado;fecha_inicio;fecha_fin;estado
-101;15/7/2026;30/7/2026;confirmada
-102;10/8/2026;20/8/2026;confirmada
-103;;;libre
-104;;;libre
-105;;;libre
-106;;;libre
+﻿id_empleado;mes_inicio;dia_inicio;dia_fin;estado
+101;7;10;24;confirmado
+102;6;5;19;confirmado
+103;;;;libre
+104;;;;libre
+105;;;;libre
+106;;;;libre
