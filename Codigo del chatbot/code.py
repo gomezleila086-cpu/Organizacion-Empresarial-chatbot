@@ -2,11 +2,14 @@ import csv
 
 #Leer empleados
 with open("empleados.csv", encoding="utf-8-sig") as f: #guarda el archivo en variable f
-    empleados = list(csv.DictReader(f, delimiter=";")) #crea diccionario  #sig elimina cualquier espacio o digito invisible 
+    empleados = list(csv.DictReader(f, delimiter=";")) #crea diccionario  #sig elimina cualquier espacio o digito invisible igual que utf-8
 
 #Leer vacaciones
 with open("vacaciones.csv", encoding="utf-8-sig") as f:
     vacaciones = list(csv.DictReader(f, delimiter=";"))
+
+
+
 #Funcion para buscar empleado
 
 def buscar_empleado(id_buscar, lista):
@@ -120,7 +123,7 @@ for v in vacaciones:
 guardar(vacaciones)
 estado = "CONFIRMADO"
 
-print("Vacaciones guardadas correctamente!")
+print(f"Vacaciones guardadas correctamente: agendadas para el mes {mes}, desde el día {dia_inicio} hasta el día {dia_fin} (Empleado ID: {id_emp})")
 
 #Notificacion RRHH FINAL
 print("NOTIFICACION RRHH: solicitud de vacaciones procesada")
