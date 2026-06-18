@@ -3,7 +3,7 @@ CHATBOT DE GESTIÓN DE VACACIONES
 
 Este programa simula un chatbot de gestión de vacaciones para una institución educativa.
 
-Funcionamiento:
+Manual de usuario:
 
 1. Solicita el ID del empleado.
 2. Valida que el empleado exista en la base de datos (empleados.csv).
