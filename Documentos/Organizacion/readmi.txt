@@ -1,2 +1,3 @@
 La documentación presentada en la carpeta de organización hace referencia a los medios por los cuales organizamos este proyecto.
 Utilizamos Jira para poder definir las bases del mismo y Bizagi para crear el diagrama del chatbot.
+Respecto a Bizagi tenemos el primero y el segundo to-be
