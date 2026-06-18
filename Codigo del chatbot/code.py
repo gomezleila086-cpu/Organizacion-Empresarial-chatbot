@@ -5,7 +5,7 @@ Este programa simula un chatbot de gestión de vacaciones para una institución 
 
 Manual de usuario:
 
-1. Solicita el ID del empleado.
+1. Solicita el ID del empleado ( IDS para utilizar: 101, 102, 103, 104, 105, 106)
 2. Valida que el empleado exista en la base de datos (empleados.csv).
 3. Calcula los días de vacaciones según la antigüedad.
 4. Solicita una fecha para las vacaciones.
