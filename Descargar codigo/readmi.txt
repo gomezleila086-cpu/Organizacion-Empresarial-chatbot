@@ -1,0 +1,26 @@
+# 📦 Instructivo para descargar el archivo .zip
+
+Este repositorio contiene un archivo comprimido (.zip) que puede ser descargado fácilmente desde GitHub.  
+A continuación se detallan los pasos:
+
+---
+
+## Opción 1: Descargar el archivo directamente
+1. Ingresar al repositorio en GitHub.
+2. Ubicar el archivo `.zip` dentro de la lista de archivos.
+3. Hacer clic sobre el nombre del archivo.
+4. En la nueva pantalla, presionar el botón **Download** (Descargar) para obtenerlo.
+
+---
+
+## Opción 2: Descargar todo el repositorio como .zip
+1. En la página principal del repositorio, hacer clic en el botón verde **Code**.
+2. Seleccionar la opción **Download ZIP**.
+3. Se descargará un archivo comprimido con **todos los contenidos del repositorio** (incluyendo el `.zip` que se agregó).
+
+---
+
+#Opción 3: Clonar el repositorio
+Si se prefiere trabajar con Git:
+```bash
+git clone https://github.com/gomezleila086-cpu/Organizacion-Empresarial-chatbot.git
