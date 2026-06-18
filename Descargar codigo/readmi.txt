@@ -1,4 +1,4 @@
-# 📦 Instructivo para descargar el archivo .zip
+# Instructivo para descargar el archivo .zip
 
 Este repositorio contiene un archivo comprimido (.zip) que puede ser descargado fácilmente desde GitHub.  
 A continuación se detallan los pasos:
