@@ -1,7 +1,7 @@
 id_empleado;mes_inicio;dia_inicio;dia_fin;estado
-101;1;10;24;confirmado
-102;6;5;19;confirmado
-103;;;;libre
-104;;;;libre
-105;;;;libre
-106;;;;libre
+101;9;1;15;confirmado
+102;1;1;15;confirmado
+103;1;1;22;confirmado
+104;12;1;22;confirmado
+105;1;1;22;confirmado
+106;8;5;26;confirmado
