@@ -35,6 +35,23 @@ with open("empleados.csv", encoding="utf-8-sig") as f: #guarda el archivo en var
 with open("vacaciones.csv", encoding="utf-8-sig") as f:
     vacaciones = list(csv.DictReader(f, delimiter=";"))
 
+def hay_conflicto(nuevo_mes, nuevo_inicio, nuevo_fin, vacaciones):
+    for v in vacaciones:
+        if v["estado"] == "confirmado":
+
+            mes = int(v["mes_inicio"])
+            inicio = int(v["dia_inicio"])
+            fin = int(v["dia_fin"])
+
+            # mismo mes
+            if mes == nuevo_mes:
+
+                # chequeo de solapamiento de días
+                if not (nuevo_fin < inicio or nuevo_inicio > fin):
+                    return True
+
+    return False
+
 
 
 #Funcion para buscar empleado
@@ -122,8 +139,14 @@ while estado == "ESPERANDO_FECHA" and intentos_fecha < max_intentos:
     dia_inicio = int(input("Ingrese el dia de inicio: "))
 
     dia_fin = dia_inicio + dias
+
+    #Chequeo de conflicto
+    if hay_conflicto(mes, dia_inicio, dia_fin, vacaciones):
+        intentos_fecha += 1
+        print("Fecha no valida - Ya existe una solicitud de vacaciones en ese rango")
+        print("Intentos: ", intentos_fecha)
     
-    if dia_fin > 30:
+    elif dia_fin > 30:
         intentos_fecha += 1
         print("Fecha no valida - Ocupada")
         print("Intentos:", intentos_fecha)
